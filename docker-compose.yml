@@ -10,9 +10,13 @@ services:
   web:
     build: .
     command: python /code/manage.py runserver 0.0.0.0:8000
+    environment: 
+      - SECRET_KEY=w&fo8dwhc0fqmdqg^mw=$dw4=#-p!4u*hs)z(o65q+xhleeq@2
+      - DEBUG=1
+
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     depends_on:
-      - db
+      - db 

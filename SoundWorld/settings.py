@@ -2,6 +2,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Imported from Docker-compose-yml
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = int(os.environ.get('DEBUG', default=0))
@@ -31,11 +32,13 @@ INSTALLED_APPS = [
 
 ]
 
+# CRISPY form config
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 AUTH_USER_MODEL= 'users.CustomUser'
 SITE_ID = 1
 
+# Account Authentication Config
 LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT = 'home'
 
@@ -50,7 +53,11 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+# Console Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# For Sending Emails
+DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,6 +89,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'SoundWorld.wsgi.application'
 
+# DATABASE config
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -120,7 +128,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+# ALL Static Files and media settings
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",

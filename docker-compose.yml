@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_DB=sound
+      - POSTGRES_DB=datasound
       - POSTGRES_USER=omar
       - POSTGRES_PASSWORD=010
   web:

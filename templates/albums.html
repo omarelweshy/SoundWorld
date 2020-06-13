@@ -1,0 +1,56 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Album{% endblock title %}
+{% block content %}
+    <div class="row">
+        {% for album in albums_list %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+            <a href="">
+                <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ album.cover.url }}">
+            </a>
+            <div class="card-body">
+                <h3 class="card-text">{{ album.title }}</h3>
+                <p class="card-text">By : {{ album.author }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    {% if user.is_authenticated %}
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    {% endif %}
+                </div>
+                {% if date %}
+                <small class="text-muted">{{ album.date }}</small>
+                {% else %}
+                <small class="text-muted">Undated</small>
+                {% endif %}
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
+
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+ 

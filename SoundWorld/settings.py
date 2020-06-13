@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     # APPS
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
+    'songs.apps.SongsConfig',
 
 ]
 
@@ -93,7 +94,7 @@ WSGI_APPLICATION = 'SoundWorld.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sound',
+        'NAME': 'datasound',
         'USER': 'omar',
         'PASSWORD': '010',
         'HOST': 'db',
@@ -139,4 +140,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

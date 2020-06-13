@@ -2,6 +2,17 @@
 {% load static %}
 {% block title %}Home{% endblock title %}
 {% block content %}
-<h1>Sound World</h1>
-
+    {% for song in song_list %}
+    <ul class="list-unstyled">
+    <li class="media">
+        <img src="{{ song.cover.url }}" class="mr-3" alt="{{ song.title }}" width="200" height="200">
+        <div class="media-body">
+        <h3 class="mt-0 mb-1">{{ song.title }}</h3>
+        <h6>Author : {{ song.author }}.</h6>
+        <h6>Album : {{ song.album }}</h6>
+        </div>
+    </li>
+    </ul>
+    {% endfor %}
 {% endblock content %}
+

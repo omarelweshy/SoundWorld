@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     # APPS
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
-    'songs.apps.SongsConfig',
+    'song.apps.SongConfig',
+    'album.apps.AlbumConfig',
 
 ]
 

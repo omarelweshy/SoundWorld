@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Song{% endblock title %}
 {% block content %}
-<main role="main" class="container">
+ <main role="main" class="container">
     <img src="{{ song.cover.url }}" class="mr-3" alt="{{ song.title }}" width="200" height="300">
       <h1 class="mt-5">{{ song.title }}</h1>
       <p class="lead"> By :{{ song.author }}</p>
@@ -12,9 +12,5 @@
       <source src="{{ song.song_file.url }}" type="audio/mp3"> 
     </audio>
 
-
-
-<div id="gtx-trans" style="position: absolute; left: 363px; top: 95px;"><div class="gtx-trans-icon"></div></div></body>
-  
 {% endblock content %}
   

@@ -12,6 +12,7 @@
         </a>
         <h6>Author : {{ song.author }}.</h6>
         <h6>Album : {{ song.album }}</h6>
+        <a href="{% url 'update_song' song.slug %}"> update </a>
         </div>
     </li>
     </ul>

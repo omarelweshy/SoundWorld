@@ -1,0 +1,27 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}album{% endblock title %}
+
+{% block content %}
+<style>
+    h1 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+</style>
+ <main role="main" class="container">
+    <img src="{{ album.cover.url }}" class="mr-3" alt="{{ album.title }}" width="900" height="600">
+      <h1 class="mt-5">{{ album.title }} ( {{ album.songs.count }} )</h1>
+      <p class="lead"> By : {{ album.author }} Created in {{ album.date }}</p>
+    </main>
+    <div>
+        <h3>
+            {% for song in album.songs.all %}
+                <ul>
+                    {{ song.title }}
+                </ul>
+            {% endfor %}
+        </h3>
+    </div>
+
+{% endblock content %}
+  

@@ -24,6 +24,7 @@
             <a class="nav-link" href="">About</a>
         </li>
         </ul>
+        <div>
         {% if user.is_authenticated %}
             Welcome {{ user.username }}
             <a href="{% url 'account_logout' %}"><button type="button" class="btn btn-warning">Log out</button></a>
@@ -31,6 +32,7 @@
              <a href="{% url 'account_login' %}"><button type="button" class="btn btn-lg btn-primary" >Login</button><a>
              <a href="{% url 'account_signup' %}"><button type="button" class="btn btn-secondary btn-lg" >Sign Up</button><a>
         {% endif %}
+        </div>
     </div>
     </nav>
 </header>

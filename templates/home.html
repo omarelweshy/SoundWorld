@@ -11,7 +11,11 @@
             <h3 class="mt-0 mb-1">{{ song.title }}</h3>
         </a>
         <h6>Author : {{ song.author }}.</h6>
+        {% if song.album %}
         <h6>Album : {{ song.album }}</h6>
+        {% else %}
+        <h6>Album : Unlisted</h6>
+        {% endif %}
         <a href="{% url 'update_song' song.slug %}"> update </a>
         </div>
     </li>

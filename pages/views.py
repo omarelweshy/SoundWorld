@@ -23,8 +23,13 @@ class SongDetailView(DetailView):
 
 class AlbumDetailView(DetailView):
     model = Album
-    context_object_name = 'albums_list'
+    context_object_name = 'album'
     template_name = "album_detail.html"
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['song_list'] = Song.objects.select_related('song').all()
+    #     return context
 
 class UpdateSongView(UpdateView):
     model = Song
@@ -32,3 +37,8 @@ class UpdateSongView(UpdateView):
     context_object_name = 'song'
     template_name = 'forms/update_song_form.html'
 
+class UpdateAlbumView(UpdateView):
+    model = Album
+    fields = ['title', 'songs', 'cover', 'date',]
+    context_object_name = 'album'
+    template_name = 'forms/update_album_form.html'

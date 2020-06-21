@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Search Result{% endblock title %}
+{% block content %}
+<h1> Search Result : </h1>
+{% for song in song_list %}
+<li class="media">
+        <img src="{{ song.cover.url }}" class="mr-3" alt="{{ song.title }}" width="200" height="200">
+        <div class="media-body">
+        <a href={% url 'song_detail' song.slug %}>
+            <h3 class="mt-0 mb-1">{{ song.title }}</h3>
+        </a>
+        <h6>Author : {{ song.author }}.</h6>
+        {% if song.album %}
+        <h6>Album : {{ song.album }}</h6>
+        {% else %}
+        <h6>Album : Unlisted</h6>
+        {% endif %}
+        </div>
+    </li>
+{% endfor %}
+{% endblock content %}
+  

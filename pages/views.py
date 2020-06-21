@@ -5,6 +5,7 @@ from django.views.generic.edit import UpdateView, CreateView
 from song.forms import *
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import redirect
+from django.db.models import Q
 
 class HomePageView(ListView):
     model = Song
@@ -60,3 +61,13 @@ class SongDeleteView(DeleteView):
     context_object_name = 'song'
     template_name = "forms/song_confirm_delete.html"
     success_url = reverse_lazy('home')
+
+class SearchResultView(ListView):
+    model = Song
+    context_object_name = 'song_list'
+    template_name = "search_result.html"
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        return Song.objects.filter(
+        Q(title__icontains=query) | Q(Type__icontains=query)
+        )

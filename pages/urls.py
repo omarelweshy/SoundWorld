@@ -16,4 +16,5 @@ urlpatterns = [
     path('song/<slug:slug>/update', UpdateSongView.as_view(), name='update_song'),
     path('create/song/', SongCreateView.as_view(), name='create_song'),
     path('song/<slug:slug>/delete', SongDeleteView.as_view(), name='delete_song'),
+    path('search/', SearchResultView.as_view(), name='search_result'),
 ]

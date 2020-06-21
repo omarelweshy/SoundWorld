@@ -1,4 +1,15 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register(Song)
+class CommentInline(admin.TabularInline):
+    model = Comment
+
+@admin.register(Song)
+class SongAdmin(admin.ModelAdmin):
+    inlines = [
+        CommentInline,
+    ]
+    
+    list_display = ('title', 'author', 'Type',)
+    list_filter = ('Type','author','date')
+    search_fields = ('title' , 'author', 'Type',)

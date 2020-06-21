@@ -1,9 +1,9 @@
 from django.views.generic import *
 from song.models import *
 from album.models import *
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, CreateView
 from song.forms import *
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.shortcuts import redirect
 
 class HomePageView(ListView):
@@ -42,3 +42,21 @@ class UpdateAlbumView(UpdateView):
     fields = ['title', 'songs', 'cover', 'date',]
     context_object_name = 'album'
     template_name = 'forms/update_album_form.html'
+
+class SongCreateView(CreateView):
+    model = Song
+    template_name = "forms/create_song_form.html"
+    fields = ['title', 'Type', 'song_file', 'cover', 'date',]
+    success_url = reverse_lazy('home')
+
+class AlbumCreateView(CreateView):
+    model = Album
+    fields = ['title', 'songs', 'cover', 'date',]
+    template_name = "forms/create_album_form.html"
+    success_url = reverse_lazy('ablums')
+
+class SongDeleteView(DeleteView):
+    model = Song
+    context_object_name = 'song'
+    template_name = "forms/song_confirm_delete.html"
+    success_url = reverse_lazy('home')

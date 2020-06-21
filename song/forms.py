@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from .models import *
 
-class UpdateSong(ModelForm):
+class CreateSongForm(ModelForm):
     class Meta:
-        Model = Song
+        model = Song
         fields = ['title', 'Type', 'song_file', 'cover', 'date',]

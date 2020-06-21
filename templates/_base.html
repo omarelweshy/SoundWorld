@@ -18,7 +18,10 @@
             <a class="nav-link" href="{% url 'albums' %}">Albums</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">Artists</a>
+            <a href="{% url 'create_song' %}" class="nav-link" href="">ADD SONG</a>
+        </li>
+        <li>
+            <a href="{% url 'create_album' %}" class="nav-link" href="">ADD ALBUM</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="">About</a>

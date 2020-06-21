@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.conf import settings
 from autoslug import AutoSlugField
 from song.models import Song
 
@@ -8,9 +9,9 @@ class Album(models.Model):
         on_delete=models.CASCADE,
     )    
     title = models.CharField(max_length=50)
-    songs = models.ManyToManyField(Song, blank=True, null=True, related_name='song')
+    songs = models.ManyToManyField(Song, blank=True, related_name='song')
     slug = AutoSlugField(populate_from='title', unique=True)
-    cover = models.ImageField(upload_to='album_cover', blank=False)
+    cover = models.ImageField(upload_to='album_cover', blank=True)
     date = models.DateField(blank=True, null=True)
 
     def __str__(self):

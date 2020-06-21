@@ -25,12 +25,14 @@ INSTALLED_APPS = [
     'crispy_forms',
     'allauth',
     'allauth.account',
+    'rest_framework',
 
     # APPS
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'song.apps.SongConfig',
     'album.apps.AlbumConfig',
+    'api.apps.ApiConfig',
 
 ]
 
@@ -49,6 +51,7 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_UNIQUE_EMAIL = True
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -59,7 +62,7 @@ AUTHENTICATION_BACKENDS = (
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # For Sending Emails
-DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
+DEFAULT_FROM_EMAIL = 'admin@djangosoundworld.com'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,7 +133,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-# ALL Static Files and media settings
+# Static Files and media settings
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",

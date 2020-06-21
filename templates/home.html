@@ -17,6 +17,7 @@
         <h6>Album : Unlisted</h6>
         {% endif %}
         <a href="{% url 'update_song' song.slug %}"> update </a>
+        <a href="{% url 'delete_song' song.slug %}"> Delete </a>
         </div>
     </li>
     </ul>

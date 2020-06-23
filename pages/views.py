@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import *
 from song.models import *
 from album.models import *
@@ -17,50 +18,55 @@ class AlbumsPageView(ListView):
     context_object_name = 'albums_list'
     template_name = 'albums.html'
 
-class SongDetailView(DetailView):
+class SongDetailView(LoginRequiredMixin, DetailView):
     model = Song
     context_object_name = 'song'
     template_name = "song_detail.html"
+    login_url = "account_login"
 
-class AlbumDetailView(DetailView):
+class AlbumDetailView(LoginRequiredMixin, DetailView):
     model = Album
     context_object_name = 'album'
     template_name = "album_detail.html"
+    login_url = "account_login"
 
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
     #     context['song_list'] = Song.objects.select_related('song').all()
     #     return context
 
-class UpdateSongView(UpdateView):
+class UpdateSongView(LoginRequiredMixin, UpdateView):
     model = Song
     fields = ['title', 'Type', 'song_file', 'cover', 'date',]
     context_object_name = 'song'
     template_name = 'forms/update_song_form.html'
+    login_url = "account_login"
 
-class UpdateAlbumView(UpdateView):
+class UpdateAlbumView(LoginRequiredMixin, UpdateView):
     model = Album
     fields = ['title', 'songs', 'cover', 'date',]
     context_object_name = 'album'
     template_name = 'forms/update_album_form.html'
+    login_url = "account_login"
 
-class SongCreateView(CreateView):
+class SongCreateView(LoginRequiredMixin, CreateView):
     model = Song
     template_name = "forms/create_song_form.html"
     fields = ['title', 'Type', 'song_file', 'cover', 'date',]
-    success_url = reverse_lazy('home')
+    login_url = "account_login"
 
-class AlbumCreateView(CreateView):
+class AlbumCreateView(LoginRequiredMixin, CreateView):
     model = Album
     fields = ['title', 'songs', 'cover', 'date',]
     template_name = "forms/create_album_form.html"
-    success_url = reverse_lazy('ablums')
+    login_url = "account_login"
 
-class SongDeleteView(DeleteView):
+class SongDeleteView(LoginRequiredMixin, DeleteView):
     model = Song
     context_object_name = 'song'
     template_name = "forms/song_confirm_delete.html"
     success_url = reverse_lazy('home')
+    login_url = "account_login"
 
 class SearchResultView(ListView):
     model = Song
@@ -71,3 +77,9 @@ class SearchResultView(ListView):
         return Song.objects.filter(
         Q(title__icontains=query) | Q(Type__icontains=query)
         )
+
+class CommentSongFormView(LoginRequiredMixin, CreateView):
+    model = Song
+    form_class = SongCommentForm
+    template_name = "song_detail.html"
+    success_url = reverse_lazy('home')

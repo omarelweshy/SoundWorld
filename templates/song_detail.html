@@ -11,5 +11,21 @@
       <source src="{{ song.song_file.url }}" type="audio/mp3"> 
     </audio>
 
+  <div>
+  <h3>Comments ({{ song.comments.count }})</h3>
+  {% for comment in song.comments.all %}
+    <ul>
+      
+        <li>{{ comment.comment }} ({{ comment.author }})</li>
+    </ul>
+  {% endfor %}
+  </div>
+  <form id="SongCommentForm" action="{{ song.get_absolute_url }}" method="post">
+      <div class="col_half">
+            {% csrf_token %}
+        <label for="comment">Comment:</label>
+        <input type="text" class="form-control"/>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>
+      </div>
 {% endblock content %}
   

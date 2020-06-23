@@ -5,3 +5,5 @@ django-crispy-forms
 django-allauth
 pillow
 django-autoslug
+django-debug-toolbar
+django-author

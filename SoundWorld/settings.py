@@ -9,7 +9,8 @@ DEBUG = int(os.environ.get('DEBUG', default=0))
 
 ALLOWED_HOSTS = ['*']
 
-
+CSRF_COOKIE_SECURE = True
+SECURE_REFERRER_POLICY = 'same-origin'
 # Application definition
 
 INSTALLED_APPS = [
@@ -26,6 +27,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_framework',
+    'author',
 
     # APPS
     'users.apps.UsersConfig',
@@ -72,6 +74,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Auto Author
+    'author.middlewares.AuthorDefaultBackendMiddleware',
 ]
 
 ROOT_URLCONF = 'SoundWorld.urls'

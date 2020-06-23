@@ -3,11 +3,10 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 from autoslug import AutoSlugField
 from song.models import Song
+from author.decorators import with_author
 
-class Album(models.Model):
-    author = models.ForeignKey(get_user_model(),
-        on_delete=models.CASCADE,
-    )    
+@with_author
+class Album(models.Model):   
     title = models.CharField(max_length=50)
     songs = models.ManyToManyField(Song, blank=True, related_name='song')
     slug = AutoSlugField(populate_from='title', unique=True)

@@ -10,6 +10,6 @@ class SongAdmin(admin.ModelAdmin):
         CommentInline,
     ]
     
-    list_display = ('title', 'author', 'Type',)
-    list_filter = ('Type','author','date')
-    search_fields = ('title' , 'author', 'Type',)
+    list_display = ('title', 'Type',)
+    list_filter = ('Type', 'date')
+    search_fields = ('title', 'Type',)

@@ -78,10 +78,3 @@ class SearchResultView(ListView):
         return Song.objects.filter(
         Q(title__icontains=query) | Q(Type__icontains=query)
         )
-
-class CommentSongFormView(LoginRequiredMixin, CreateView):
-    model = Comment
-    form_class = SongCommentForm
-    context_object_name = 'comment'
-    template_name = "forms/comment.html"
-    login_url = "account_login"

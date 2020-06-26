@@ -130,12 +130,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-]
+        'rest_framework.permissions.IsAuthenticated',],
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
 
 CORS_ORIGIN_WHITELIST = (
-'http://0.0.0.0:8000',
+    'http://0.0.0.0:8000',
 )
 
 LANGUAGE_CODE = 'en-us'

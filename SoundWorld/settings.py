@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'rest_framework',
     'author',
+    'corsheaders',
 
     # APPS
     'users.apps.UsersConfig',
@@ -71,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -126,6 +128,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+]
+}
+
+CORS_ORIGIN_WHITELIST = (
+'http://0.0.0.0:8000',
+)
 
 LANGUAGE_CODE = 'en-us'
 

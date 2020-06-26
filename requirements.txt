@@ -7,3 +7,4 @@ pillow
 django-autoslug
 django-debug-toolbar
 django-author
+django-cors-headers

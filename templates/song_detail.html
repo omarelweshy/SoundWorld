@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %}Song{% endblock title %}
 {% block content %}
  <main role="main" class="container">
@@ -20,12 +21,7 @@
     </ul>
   {% endfor %}
   </div>
-  <form id="SongCommentForm" action="{{ song.get_absolute_url }}" method="post">
-      <div class="col_half">
-            {% csrf_token %}
-        <label for="comment">Comment:</label>
-        <input type="text" class="form-control"/>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Comment</button>
-      </div>
+        <a href="{% url 'add_comment' song.slug %}" ><button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Comment</button></a>
+
 {% endblock content %}
   

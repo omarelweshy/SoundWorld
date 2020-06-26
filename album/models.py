@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.conf import settings
 from autoslug import AutoSlugField
+from django.urls import reverse
 from song.models import Song
 from author.decorators import with_author
 
@@ -17,4 +18,4 @@ class Album(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('song_detail', args=[str(self.slug)])
+        return reverse('album_detail', args=[str(self.slug)])

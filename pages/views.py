@@ -7,6 +7,7 @@ from song.forms import *
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import redirect
 from django.db.models import Q
+from django.views.decorators.csrf import csrf_exempt
 
 class HomePageView(ListView):
     model = Song
@@ -79,7 +80,8 @@ class SearchResultView(ListView):
         )
 
 class CommentSongFormView(LoginRequiredMixin, CreateView):
-    model = Song
+    model = Comment
     form_class = SongCommentForm
-    template_name = "song_detail.html"
-    success_url = reverse_lazy('home')
+    context_object_name = 'comment'
+    template_name = "forms/comment.html"
+    login_url = "account_login"

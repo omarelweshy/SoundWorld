@@ -10,3 +10,6 @@ django-author
 django-cors-headers
 coreapi
 pyyaml
+whitenoise
+gunicorn
+dj-database-url

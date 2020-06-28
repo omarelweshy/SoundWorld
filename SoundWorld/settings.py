@@ -2,15 +2,40 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Imported from Docker-compose-yml
+# Heroku
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+# Deployment Settings
+ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
+if ENVIRONMENT == 'production':
+    SECURE_BROWSER_XSS_FILTER = True
+    CSRF_COOKIE_SECURE = True
+    X_FRAME_OPTIONS = 'DENY'
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SESSION_COOKIE_SECURE = True 
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Debug Tool
+import socket
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
+
+# Imported from docker-compose-yml
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = int(os.environ.get('DEBUG', default=0))
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['young-waters-40900.herokuapp.com', 'localhost', '127.0.0.1']
 
 CSRF_COOKIE_SECURE = False
 SECURE_REFERRER_POLICY = 'same-origin'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -21,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    # White noise
+    'whitenoise.runserver_nostatic',
 
     # Third Party
     'crispy_forms',
@@ -29,6 +56,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'author',
     'corsheaders',
+    'debug_toolbar',
 
     # APPS
     'users.apps.UsersConfig',
@@ -78,6 +106,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Auto Author
     'author.middlewares.AuthorDefaultBackendMiddleware',
+    # Debug Toolbar
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # White noise
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'SoundWorld.urls'

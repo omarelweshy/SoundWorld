@@ -2,18 +2,18 @@ version: '3'
     
 services:
   db:
-    image: postgres
+    image: postgres:11
     environment:
-      - POSTGRES_DB=datasound
-      - POSTGRES_USER=omar
-      - POSTGRES_PASSWORD=010
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
   web:
     build: .
-    command: gunicorn SoundWorld.wsgi -b 0.0.0.0:8000
+    command: python /code/manage.py runserver 0.0.0.0:8000
     environment: 
-      - ENVIRONMENT=development
+      - ENVIRONMENT=production
       - SECRET_KEY=w&fo8dwhc0fqmdqg^mw=$dw4=#-p!4u*hs)z(o65q+xhleeq@2
-      - DEBUG=1
+      - DEBUG=0
 
     volumes:
       - .:/code

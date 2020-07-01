@@ -31,11 +31,6 @@ class AlbumDetailView(LoginRequiredMixin, DetailView):
     template_name = "album_detail.html"
     login_url = "account_login"
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['song_list'] = Song.objects.select_related('song').all()
-    #     return context
-
 class UpdateSongView(LoginRequiredMixin, UpdateView):
     model = Song
     fields = ['title', 'Type', 'song_file', 'cover', 'date',]
@@ -78,3 +73,6 @@ class SearchResultView(ListView):
         return Song.objects.filter(
         Q(title__icontains=query) | Q(Type__icontains=query)
         )
+
+class AboutView(TemplateView):
+    template_name="about.html"

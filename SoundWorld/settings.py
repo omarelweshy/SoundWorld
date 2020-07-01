@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = int(os.environ.get('DEBUG', default=0))
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['young-waters-40900.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
 
 CSRF_COOKIE_SECURE = False
 SECURE_REFERRER_POLICY = 'same-origin'

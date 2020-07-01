@@ -133,16 +133,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'SoundWorld.wsgi.application'
 
 # DATABASE config
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'datasound',
-        'USER': 'omar',
-        'PASSWORD': '010',
-        'HOST': 'db',
-        'PORT': 5432,
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'datasound',
+#         'USER': 'omar',
+#         'PASSWORD': '010',
+#         'HOST': 'db',
+#         'PORT': 5432,
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [

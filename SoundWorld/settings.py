@@ -2,10 +2,10 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Heroku
+#Heroku
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+DATABASES = { 'default': dj_database_url.config() }
 
 # Deployment Settings
 ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = int(os.environ.get('DEBUG', default=0))
 
-ALLOWED_HOSTS = ['young-waters-40900.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['young-waters-40900.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
 
 CSRF_COOKIE_SECURE = False
 SECURE_REFERRER_POLICY = 'same-origin'

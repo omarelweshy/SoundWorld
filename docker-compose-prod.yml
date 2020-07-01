@@ -13,7 +13,7 @@ services:
     environment: 
       - ENVIRONMENT=production
       - SECRET_KEY=w&fo8dwhc0fqmdqg^mw=$dw4=#-p!4u*hs)z(o65q+xhleeq@2
-      - DEBUG=0
+      - DEBUG=1
 
     volumes:
       - .:/code

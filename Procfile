@@ -9,4 +9,4 @@ setup:
         command:
             - python manage.py collectstatic --noinput
     run:
-        web: gunicorn SoundWorld.wsgi --log-file
+        web: gunicorn SoundWorld.wsgi
